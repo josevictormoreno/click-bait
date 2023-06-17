@@ -3,22 +3,28 @@ from tkinter import *
 from tkinter import messagebox
 import random 
 
+#cria janela com dimensão e background
 screen = tk.Tk()
 screen.title("ACEITE!")
 screen.geometry("600x600")
 screen.configure(background='#ffffff')
 
+#função que move o botão para uma nova posição aleatoria
 def move_button_1(e):
     if abs(e.x - button_1.winfo_x()) < 50 and abs(e.y - button_1.winfo_y()) < 40:
         x = random.randint(0, screen.winfo_width() - button_1.winfo_width())
         y = random.randint(0, screen.winfo_height() - button_1.winfo_height())
         button_1.place(x=x, y=y)
 
+#função para botão fixo
 def accepted():
     messagebox.showinfo('CORRETO!')
+
+#Something is definitly wrong
 def denied():
     button_1.destroy()
 
+#botões e outros objetos
 margin = Canvas(screen, width=500, bg='#FFFFFF', height=100, bd=0, highlightthickness=0, relief='ridge')
 margin.pack()
 text_id = Label(screen, bg='#ffffff', text='O zeviane é um babaca?', fg='#000000', font=('arial', 30, 'bold'))
